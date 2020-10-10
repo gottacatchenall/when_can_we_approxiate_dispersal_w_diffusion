@@ -1,0 +1,3 @@
+[submodule "MetapopulationDynamics.jl"]
+	path = MetapopulationDynamics.jl
+	url = https://github.com/gottacatchenall/MetapopulationDynamics.jl
