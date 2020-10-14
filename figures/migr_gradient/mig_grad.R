@@ -4,14 +4,12 @@ library(tidyverse)
 library(latex2exp)
 library(ggthemr) # devtools::install_github("")
 library(extrafont)
-setwd("~/MetapopulationDynamics/migr_gradient/")
 loadfonts()
 string_to_tex = function(str) { return(TeX(str)) }
-
 ggthemr('fresh', spacing=2, layout='scientific')
 
 ## PCC_diff_example
-setwd("~/MetapopulationDynamics/migr_gradient/")
+setwd("~/papers/when_can_we_approxiate_dispersal_w_diffusion/figures/migr_gradient//")
 migr_grad_over_lambda = read.csv('output.csv') %>%
   group_by(treatment) %>%
   full_join(read.csv('metadata.csv'),by='treatment') %>% 
@@ -39,6 +37,7 @@ migr_grad_over_lambda = read.csv('output.csv') %>%
   ) + facet_wrap(. ~ (lambda_label), labeller = as_labeller(string_to_tex, default=label_parsed))+
   scale_fill_manual(values= c("#394d56", "#40967b")) 
 
+migr_grad_over_lambda
 #colors=c("#353945","#394d56", "#19b4ca", "#40967b", "#d8c256", "#f4ad45", "#fb5a3d"),  
 ggsave("migr_grad_over_lambda.png",plot=migr_grad_over_lambda, device=png(), width=12, height=8)
 
